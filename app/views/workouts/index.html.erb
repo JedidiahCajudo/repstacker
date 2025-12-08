@@ -1,0 +1,12 @@
+<h1>Training Log</h1>
+
+<%= link_to "Log a New Workout", new_workout_path %>
+
+
+<div id="workouts">
+  <% @workouts.each do |workout|  %>
+    <div>
+      <%= link_to workout.date, workout_path(workout.id) %>
+    </div>
+  <% end %>
+</div>

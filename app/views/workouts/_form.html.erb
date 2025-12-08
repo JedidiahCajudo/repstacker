@@ -1,0 +1,15 @@
+<%= form_with model: @workout, local: true do |form| %>
+  <% if form.object.errors.any? %>
+    <p class="error"><%= form.object.errors.full_messages.first %></p>
+  <% end %>
+
+<div>
+  <%= form.label :date, "Date" %>
+  <%= form.date_field :date %>
+</div>
+
+<div>
+  <%= form.submit "Save Workout" %>
+</div>
+
+<% end %>
