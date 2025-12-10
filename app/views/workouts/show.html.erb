@@ -1,5 +1,7 @@
 <h1><%= @workout.date %></h1>
 
+<p>add exercises here!</p>
+
+<%= render "form", workout: @workout %>
 <%= link_to "Back", workouts_path %>
-<%= link_to "Edit", edit_workout_path(@workout) %>
 <%= button_to "Delete", @workout, method: :delete, data: { turbo_confirm: "Are you sure?"} %>

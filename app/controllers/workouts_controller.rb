@@ -27,6 +27,7 @@ class WorkoutsController < ApplicationController
   end
 
   def edit
+    redirect_to @workout
   end
 
   def update
