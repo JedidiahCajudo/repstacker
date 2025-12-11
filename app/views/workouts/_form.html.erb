@@ -12,8 +12,14 @@
   <div class="exercise-fields">
     <%= exercise_fields.label :name, "Lift" %>
     <%= exercise_fields.text_field :name %>
-      <%= exercise_fields.label :work_sets_count, "Number of Sets" %>
-      <%= exercise_fields.number_field :work_sets_count, value: 0, min: 0 %>
+
+    <%= exercise_fields.label :weight, "Weight(kg)" %>
+    <%= exercise_fields.text_field :weight, value: 0 %>
+
+    <%= exercise_fields.label :repetitions, "Reps" %>
+    <%= exercise_fields.number_field :repetitions, value: 0 %>
+
+
   </div>
 <% end %>
 

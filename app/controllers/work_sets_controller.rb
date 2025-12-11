@@ -4,7 +4,7 @@ class WorkSetsController < ApplicationController
   before_action :set_work_set, only: %i[update destroy]
 
   def create
-    @work_set = @work_sets.new(work_set_params)
+    @work_set = WorkSet.new(work_set_params)
 
     if @work_set.save
       redirect_to workout_path(@workout), notice: 'Work set added to exercise.'
@@ -37,5 +37,9 @@ class WorkSetsController < ApplicationController
 
   def set_work_set
     @work_set = @exercise.work_sets.find(params[:id])
+  end
+
+  def work_set_params
+    params.require(:work_set).permit(:set_number, :repetitions, :weight)
   end
 end
