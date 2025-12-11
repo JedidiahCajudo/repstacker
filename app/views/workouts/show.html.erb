@@ -2,6 +2,9 @@
 
 <% @workout.exercises.each do |exercise|  %>
   <%= exercise.name %>
+  <% exercise.work_sets.each do |work_set|  %>
+    <%= work_set.repetitions %>
+  <% end %>
 <% end %>
 
 
