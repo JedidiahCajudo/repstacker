@@ -6,7 +6,7 @@
 <div id="workouts">
   <% @workouts.each do |workout|  %>
     <div>
-      <%= link_to workout.date, workout_path(workout.id) %>
+      <%= link_to workout.date.strftime("%B %d %y"), workout_path(workout.id) %>
     </div>
   <% end %>
 </div>
