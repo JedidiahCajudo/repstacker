@@ -1,0 +1,2 @@
+class WorkSetsController < ApplicationController
+end
