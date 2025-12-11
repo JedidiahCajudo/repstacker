@@ -1,6 +1,9 @@
 <h1><%= @workout.date %></h1>
 
-<p>add exercises here!</p>
+<% @workout.exercises.each do |exercise|  %>
+  <%= exercise.name %>
+<% end %>
+
 
 <%= render "form", workout: @workout %>
 <%= link_to "Back", workouts_path %>
