@@ -8,6 +8,14 @@
   <%= form.date_field :date %>
 </div>
 
+<%= form.fields_for :exercises do |exercise_fields| %>
+  <div class="exercise-fields">
+    <%= exercise_fields.label :name, "Exercise Name" %>
+    <%= exercise_fields.text_field :name %>
+  </div>
+<% end %>
+
+
 <div>
   <%= form.submit "Save Workout" %>
 </div>

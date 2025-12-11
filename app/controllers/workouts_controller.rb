@@ -1,20 +1,16 @@
 class WorkoutsController < ApplicationController
   before_action :set_workout, only: %i[show edit update destroy]
 
-
-  def set_workout
-    @workout = Workout.find(params[:id])
-  end
   def index
     @workouts = Workout.all
   end
 
   def show
-    @workout = Workout.find(params[:id])
   end
 
   def new
     @workout = Workout.new
+    @workout.exercises.build
   end
 
   def create
@@ -49,6 +45,6 @@ class WorkoutsController < ApplicationController
   end
 
   def workout_params
-    params.expect(workout: [ :date ])
+    params.require(:workout).permit(:date, exercises_attributes: %i[id name _destroy])
   end
 end
