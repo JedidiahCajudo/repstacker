@@ -2,7 +2,7 @@ class WorkoutsController < ApplicationController
   before_action :set_workout, only: %i[show edit update destroy]
 
   def index
-    @workouts = Workout.all
+    @workouts = Workout.order(date: :desc)
   end
 
   def show
@@ -10,7 +10,7 @@ class WorkoutsController < ApplicationController
 
   def new
     @workout = Workout.new
-    @workout.exercises.build
+    3.times { @workout.exercises.build }
   end
 
   def create
@@ -18,7 +18,7 @@ class WorkoutsController < ApplicationController
     if @workout.save
       redirect_to workouts_path, notice: "Workout was successfully created."
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

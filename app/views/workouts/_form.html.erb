@@ -1,23 +1,18 @@
 <%= form_with model: @workout, local: true do |form| %>
-  <% if form.object.errors.any? %>
-    <p class="error"><%= form.object.errors.full_messages.first %></p>
-  <% end %>
-
-<div>
+  <div>
   <%= form.label :date, "Date" %>
   <%= form.date_field :date %>
-</div>
-
-<%= form.fields_for :exercises do |exercise_fields| %>
-  <div class="exercise-fields">
-    <%= exercise_fields.label :name, "Lift" %>
-    <%= exercise_fields.text_field :name %>
   </div>
-<% end %>
 
+  <%= form.fields_for :exercises do |exercise_fields| %>
+    <div class="exercise-fields">
+      <%= exercise_fields.label :name, "Lift" %>
+      <%= exercise_fields.text_field :name %>
+    </div>
+  <% end %>
 
-<div>
-  <%= form.submit "Save Workout" %>
-</div>
+  <div>
+    <%= form.submit "Save Workout" %>
+  </div>
 
 <% end %>
