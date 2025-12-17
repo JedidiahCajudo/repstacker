@@ -10,23 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_17_061958) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_17_065918) do
   create_table "exercises", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "name"
     t.datetime "updated_at", null: false
     t.integer "workout_id", null: false
     t.index ["workout_id"], name: "index_exercises_on_workout_id"
-  end
-
-  create_table "work_sets", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.integer "exercise_id", null: false
-    t.integer "reps"
-    t.integer "set_number"
-    t.datetime "updated_at", null: false
-    t.integer "weight"
-    t.index ["exercise_id"], name: "index_work_sets_on_exercise_id"
   end
 
   create_table "working_sets", force: :cascade do |t|
@@ -45,6 +35,5 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_17_061958) do
   end
 
   add_foreign_key "exercises", "workouts"
-  add_foreign_key "work_sets", "exercises"
   add_foreign_key "working_sets", "exercises"
 end
