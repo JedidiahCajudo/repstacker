@@ -10,7 +10,7 @@ class WorkoutsController < ApplicationController
 
   def new
     @workout = Workout.new
-    @workout.exercises.build
+    3.times { @workout.exercises.build }
   end
 
   def create
