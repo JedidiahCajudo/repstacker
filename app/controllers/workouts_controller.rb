@@ -2,7 +2,7 @@ class WorkoutsController < ApplicationController
   before_action :set_workout, only: %i[show edit update destroy]
 
   def index
-    @workouts = Workout.all
+    @workouts = Workout.order(date: :desc)
   end
 
   def show
