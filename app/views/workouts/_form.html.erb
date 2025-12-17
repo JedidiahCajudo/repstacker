@@ -7,12 +7,19 @@
   <%= form.fields_for :exercises do |exercise_fields| %>
     <div class="exercise-fields">
       <%= exercise_fields.label :name, "Lift" %>
-      <%= exercise_fields.text_field :name %>
+      <%= exercise_fields.text_field :name, placeholder: "Enter lift name" %>
+
+      <%= exercise_fields.fields_for :working_sets do |set_fields| %>
+        <div class="set-fields">
+          <%= set_fields.number_field :reps, min: 1, placeholder: "Reps" %>
+          <%= set_fields.number_field :weight, placeholder: "Weight in kg" %>
+        </div>
+      <% end %>
     </div>
   <% end %>
 
   <div>
-    <%= form.submit "Save Workout" %>
+    <%= form.submit workout.new_record? ? "Create Workout" : "Update Workout" %>
   </div>
 
 <% end %>
