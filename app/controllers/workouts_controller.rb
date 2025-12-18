@@ -26,6 +26,19 @@ class WorkoutsController < ApplicationController
   end
 
   def edit
+    @workout = Workout.find(params[:id])
+    if @workout.exercises.empty?
+      3.times do
+        exercise = @workout.exercises.build
+        3.times { exercise.working_sets.build }
+      end
+    else
+      @workout.exercises.each do |exercise|
+        if exercise.working_sets.empty?
+          3.times { exercise.working_sets.build }
+        end
+      end
+    end
   end
 
   def update
