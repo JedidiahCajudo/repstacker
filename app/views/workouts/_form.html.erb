@@ -16,13 +16,17 @@
         </div>
       <% end %>
 
+      <%= link_to "Remove lift", "#", class: "remove-lift", data: { action: "click->workout-form#removeLift" } %>
     </div>
   <% end %>
 
   <div>
     <p>
-    <%= link_to "Add Lift", new_workout_path(add_exercise: true), method: :get %>
+    <%= link_to "Add Lift", "#", class: "add-lift", data: { action: "click->workout-form#addLift" } %>
     </p>
+  </div>
+
+  <div>
     <p>
     <%= form.submit workout.new_record? ? "Create Workout" : "Update Workout" %>
     </p>
