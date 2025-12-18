@@ -10,9 +10,11 @@ class WorkoutsController < ApplicationController
 
   def new
     @workout = Workout.new
-    3.times do
-      exercise = @workout.exercises.build
-      3.times { exercise.working_sets.build }
+    exercise = @workout.exercises.build
+    exercise.working_sets.build
+
+    if params[:add_exercise]
+      @workout.exercises.build
     end
   end
 
@@ -27,17 +29,11 @@ class WorkoutsController < ApplicationController
 
   def edit
     @workout = Workout.find(params[:id])
-    if @workout.exercises.empty?
-      3.times do
-        exercise = @workout.exercises.build
-        3.times { exercise.working_sets.build }
-      end
-    else
-      @workout.exercises.each do |exercise|
-        if exercise.working_sets.empty?
-          3.times { exercise.working_sets.build }
-        end
-      end
+    @workout.exercises.each do |exercise|
+      exercise.working_sets.build if exercise.working_sets.empty?
+    end
+    if params[:add_exercise]
+      @workout.exercises.build
     end
   end
 
