@@ -1,5 +1,4 @@
 <h1><%= @workout.date %></h1>
-
 <% @workout.exercises.each do |exercise|  %>
   <%= exercise.name %>
   <% exercise.working_sets.each do |set| %>
@@ -8,9 +7,6 @@
     </li>
   <% end %>
 <% end %>
-
 <%= render "form", workout: @workout %>
-
+<%= button_to "Delete Workout", @workout, method: :delete, data: { turbo_confirm: "Are you sure?"} %>
 <%= link_to "Back", workouts_path %>
-
-<%= button_to "Delete", @workout, method: :delete, data: { turbo_confirm: "Are you sure?"} %>

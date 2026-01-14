@@ -1,25 +1,33 @@
-<%= form_with model: @workout, local: true do |form| %>
+<%= form_with model: @workout, local: false, data: { controller: "workout-form"} do |form| %>
+  <hr>
   <div>
   <%= form.label :date, "Date" %>
   <%= form.date_field :date %>
   </div>
 
-  <%= form.fields_for :exercises do |exercise_fields| %>
-    <div class="exercise-fields">
-      <%= exercise_fields.label :name, "Lift" %>
-      <%= exercise_fields.text_field :name, placeholder: "Enter lift name" %>
+  <div data-workout-form-target="exercises">
+    <%= form.fields_for :exercises do |exercise_fields| %>
+      <%= render "exercise_fields", f: exercise_fields %>
+    <% end %>
+  </div>
 
-      <%= exercise_fields.fields_for :working_sets do |set_fields| %>
-        <div class="set-fields">
-          <%= set_fields.number_field :reps, min: 1, placeholder: "Reps" %>
-          <%= set_fields.number_field :weight, placeholder: "Weight in kg" %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+  <template data-workout-form-target="template">
+    <%= form.fields_for :exercises, Exercise.new, child_index: "NEW_RECORD" do |exercise_fields| %>
+      <%= render "exercise_fields", f: exercise_fields %>
+  </template>
 
   <div>
-    <%= form.submit workout.new_record? ? "Create Workout" : "Update Workout" %>
+    <%= link_to "Add Lift", "#",
+    data: { action: "click->workout-form#addExercise" } %>
   </div>
+
+<% end %>
+
+
+<div>
+  <p>
+  <%= form.submit workout.new_record? ? "Create Workout" : "Update Workout" %>
+  </p>
+</div>
 
 <% end %>
