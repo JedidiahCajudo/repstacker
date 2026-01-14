@@ -1,19 +1,31 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "exercises" ];
+  static targets = [ "exercises", "template" ];
 
-  addExercise(event) {
-    event.preventDefault();
-    const newExercise = this.exercisesTarget.querySelector('.exercise-fields').cloneNode(true);
-    this.exercisesTarget.appendChild(newExercise);
+  connect () {
+    console.log("WorkoutForm connected");
   }
 
-  removeExercise(event) {
-    event.preventDefault();
-    const exerciseFields = event.target.closest('.exercise-fields');
-    if (this.exercisesTarget.children.length > 1) {
-      exerciseFields.remove();
+  addExercise(event) {
+    event.preventDefault()
+
+    const content = this.templateTarget.innerHTML.replace(
+      /NEW_RECORD/g,
+      new Date().getTime()
+      )
+    this.exercisesTarget.insertAdjacentHTML("beforeend", content)
     }
- }
+
+  removeExercise(event) {
+    event.preventDefault()
+    const exercise = event.target.closest('.exercise-fields')
+    const destroyInput = exercise.querySelector("input[name*='_destroy']")
+    if (destroyInput) {
+      destroyInput.value = "1"
+      exercise.style.display = "none"
+    } else {
+      exercise.remove()
+    }
+  }
 }

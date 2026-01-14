@@ -1,0 +1,16 @@
+<div class="exercise-fields">
+  <%= f.label :name, "Lift" %>
+  <%= f.text_field :name, placeholder: "Enter lift name" %>
+
+  <%= f.fields_for :working_sets do |set_fields| %>
+    <div class="set-fields">
+      <%= set_fields.number_field :reps, min: 1, placeholder: "Reps" %>
+      <%= set_fields.number_field :weight, min: 1, placeholder: "Weight in kg" %>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :_destroy %>
+
+  <%= link_to "Remove lift", "#",
+      data: { action: "click->workout-form#removeExercise" } %>
+</div>
