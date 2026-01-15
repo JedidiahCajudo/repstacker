@@ -49,7 +49,7 @@ class WorkoutsController < ApplicationController
     params.require(:workout).permit(
       :date,
       exercises_attributes: [
-        :id, :name,
+        :id, :name, :_destroy,
         working_sets_attributes: [
           :id,
           :reps,
