@@ -12,7 +12,9 @@
   </div>
 
   <template data-workout-form-target="template">
-    <%= form.fields_for :exercises, Exercise.new, child_index: "NEW_RECORD" do |exercise_fields| %>
+    <% new_exercise = Exercise.new  %>
+    <% new_exercise.working_sets.build %>
+    <%= form.fields_for :exercises, new_exercise, child_index: "NEW_RECORD" do |exercise_fields| %>
       <%= render "exercise_fields", f: exercise_fields %>
     <% end %>
   </template>
