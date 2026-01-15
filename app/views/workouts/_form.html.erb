@@ -14,6 +14,7 @@
   <template data-workout-form-target="template">
     <%= form.fields_for :exercises, Exercise.new, child_index: "NEW_RECORD" do |exercise_fields| %>
       <%= render "exercise_fields", f: exercise_fields %>
+    <% end %>
   </template>
 
   <div>
@@ -21,13 +22,8 @@
     data: { action: "click->workout-form#addExercise" } %>
   </div>
 
-<% end %>
-
-
 <div>
-  <p>
   <%= form.submit workout.new_record? ? "Create Workout" : "Update Workout" %>
-  </p>
 </div>
 
 <% end %>
