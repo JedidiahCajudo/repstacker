@@ -1,5 +1,5 @@
 class WorkoutsController < ApplicationController
-  before_action :set_workout, only: %i[show edit update destroy]
+  before_action :set_workout, only: %i[show update destroy]
 
   def index
     @workouts = Workout.order(date: :desc)
@@ -26,19 +26,11 @@ class WorkoutsController < ApplicationController
     end
   end
 
-  def edit
-    @workout = Workout.find(params[:id])
-    @workout.exercises.each do |exercise|
-      exercise.working_sets.build if exercise.working_sets.empty?
-    end
-    @workout.exercises.build if params[:add_exercise]
-  end
-
   def update
     if @workout.update(workout_params)
       redirect_to @workout
     else
-      render :edit, status: :unprocessable_entity
+      render :show, status: :unprocessable_entity
     end
   end
 
