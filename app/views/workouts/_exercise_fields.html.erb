@@ -2,15 +2,30 @@
   <%= f.label :name, "Lift" %>
   <%= f.text_field :name, placeholder: "Enter lift name" %>
 
+<div class="sets-container">
   <%= f.fields_for :working_sets do |set_fields| %>
     <div class="set-fields">
       <%= set_fields.number_field :reps, min: 1, placeholder: "Reps" %>
       <%= set_fields.number_field :weight, min: 1, placeholder: "Weight in kg" %>
     </div>
   <% end %>
+</div>
+
+<template class="set-template">
+  <%= f.fields_for :working_sets, WorkingSet.new, child_index: "NEW_RECORD" do |set_fields| %>
+    <div class="set-fields">
+      <%= set_fields.number_field :reps, min: 1, placeholder: "Reps" %>
+      <%= set_fields.number_field :weight, min: 1, placeholder: "Weight in kg" %>
+    </div>
+  <% end %>
+</template>
+
+
+<%= link_to "Add Set", "#",
+    data: { action: "click->workout-form#addSet" } %>
 
   <%= f.hidden_field :_destroy %>
 
-  <%= link_to "Remove lift", "#",
-      data: { action: "click->workout-form#removeExercise" } %>
+<%= link_to "Remove lift", "#",
+    data: { action: "click->workout-form#removeExercise" } %>
 </div>

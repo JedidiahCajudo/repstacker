@@ -12,8 +12,6 @@ export default class extends Controller {
     console.log("workout-form: addExercise called")
 
     const timestamp = new Date().getTime()
-
-    // Clone the <template> content to ensure we get the fragment
     const wrapper = document.createElement('div')
     wrapper.appendChild(this.templateTarget.content.cloneNode(true))
 
@@ -33,5 +31,22 @@ export default class extends Controller {
     } else {
       exercise.remove()
     }
+  }
+
+  addSet(event) {
+    event.preventDefault()
+    console.log("workout-form: addSet called")
+
+    const timestamp = new Date().getTime()
+    const wrapper = document.createElement('div')
+    const setsContainer = event.target.closest('.exercise-fields').querySelector('.sets-container')
+    const setTemplate = event.target.closest('.exercise-fields').querySelector('.set-template')
+
+    wrapper.appendChild(setTemplate.content.cloneNode(true))
+
+    const content = wrapper.innerHTML.replace(/NEW_RECORD/g, timestamp)
+    setsContainer.insertAdjacentHTML("beforeend", content)
+
+    console.log("workout-form: set added", timestamp)
   }
 }
