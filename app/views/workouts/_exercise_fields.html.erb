@@ -7,6 +7,8 @@
     <div class="set-fields">
       <%= set_fields.number_field :reps, min: 1, placeholder: "Reps" %>
       <%= set_fields.number_field :weight, min: 1, placeholder: "Weight in kg" %>
+      <%= set_fields.hidden_field :_destroy %>
+      <%= link_to "Remove", "#", data: { action: "click->workout-form#removeSet"} %>
     </div>
   <% end %>
 </div>
@@ -16,6 +18,8 @@
     <div class="set-fields">
       <%= set_fields.number_field :reps, min: 1, placeholder: "Reps" %>
       <%= set_fields.number_field :weight, min: 1, placeholder: "Weight in kg" %>
+      <%= set_fields.hidden_field :_destroy %>
+      <%= link_to "Remove", "#", data: { action: "click->workout-form#removeSet"} %>
     </div>
   <% end %>
 </template>

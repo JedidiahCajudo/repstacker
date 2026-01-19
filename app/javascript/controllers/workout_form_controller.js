@@ -49,4 +49,16 @@ export default class extends Controller {
 
     console.log("workout-form: set added", timestamp)
   }
+
+  removeSet(event) {
+    event.preventDefault()
+    const set = event.target.closest('.set-fields')
+    const destroyInput = set.querySelector("input[name*='_destroy']")
+    if (destroyInput) {
+      destroyInput.value = "1"
+      set.style.display = "none"
+    } else {
+      set.remove()
+    }
+  }
 }
