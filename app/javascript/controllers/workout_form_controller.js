@@ -22,7 +22,7 @@ export default class extends Controller {
   removeExercise(event) {
     event.preventDefault()
     const exercise = event.target.closest('.exercise-fields')
-    const destroyInput = exercise.querySelector("input[name*='_destroy']")
+    const destroyInput = exercise.querySelector("input[name*='exercises'][name*='_destroy']")
     if (destroyInput) {
       destroyInput.value = "1"
       exercise.style.display = "none"

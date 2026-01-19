@@ -1,4 +1,5 @@
 <div class="exercise-fields">
+  <%= f.hidden_field :_destroy %>
   <%= f.label :name, "Lift" %>
   <%= f.text_field :name, placeholder: "Enter lift name" %>
 
@@ -24,11 +25,6 @@
   <% end %>
 </template>
 
-<%= link_to "Add Set", "#",
-    data: { action: "click->workout-form#addSet" } %>
-
-  <%= f.hidden_field :_destroy %>
-
-<%= link_to "Remove lift", "#",
-    data: { action: "click->workout-form#removeExercise" } %>
+<%= link_to "Add Set", "#", data: { action: "click->workout-form#addSet" } %>
+<%= link_to "Remove lift", "#", data: { action: "click->workout-form#removeExercise" } %>
 </div>
