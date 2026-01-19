@@ -10,14 +10,11 @@ export default class extends Controller {
   addExercise(event) {
     event.preventDefault()
     console.log("workout-form: addExercise called")
-
     const timestamp = new Date().getTime()
     const wrapper = document.createElement('div')
     wrapper.appendChild(this.templateTarget.content.cloneNode(true))
-
     const content = wrapper.innerHTML.replace(/NEW_RECORD/g, timestamp)
     this.exercisesTarget.insertAdjacentHTML("beforeend", content)
-
     console.log("workout-form: exercise added", timestamp)
   }
 
@@ -35,18 +32,20 @@ export default class extends Controller {
 
   addSet(event) {
     event.preventDefault()
-    console.log("workout-form: addSet called")
-
+    const exerciseFields = event.target.closest('.exercise-fields')
+    const setsContainer = exerciseFields.querySelector('.sets-container')
+    const setTemplate = exerciseFields.querySelector('.set-template')
     const timestamp = new Date().getTime()
     const wrapper = document.createElement('div')
-    const setsContainer = event.target.closest('.exercise-fields').querySelector('.sets-container')
-    const setTemplate = event.target.closest('.exercise-fields').querySelector('.set-template')
-
     wrapper.appendChild(setTemplate.content.cloneNode(true))
-
-    const content = wrapper.innerHTML.replace(/NEW_RECORD/g, timestamp)
-    setsContainer.insertAdjacentHTML("beforeend", content)
-
+    wrapper.innerHTML = wrapper.innerHTML.replace(/NEW_RECORD/g, timestamp)
+    const newSet = wrapper.firstElementChild
+    const lastSet = setsContainer.querySelector('.set-fields:last-of-type:not([stlyle*="display: none"])')
+    if (lastSet) {
+      newSet.querySelector('[name*="weight"]').value = lastSet.querySelector('[name*="weight"]').value
+      newSet.querySelector('[name*="reps"]').value = lastSet.querySelector('[name*="reps"]').value
+    }
+    setsContainer.appendChild(newSet)
     console.log("workout-form: set added", timestamp)
   }
 
