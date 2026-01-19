@@ -1,7 +1,6 @@
 <div class="exercise-fields">
   <%= f.hidden_field :_destroy %>
   <%= f.label :name, "Lift" %>
-  <%= f.text_field :name, placeholder: "Enter lift name" %>
 
 <div class="sets-container">
   <%= f.fields_for :working_sets do |set_fields| %>
