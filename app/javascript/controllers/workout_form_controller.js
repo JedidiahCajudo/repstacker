@@ -5,6 +5,7 @@ export default class extends Controller {
 
   connect () {
     console.log("WorkoutForm connected");
+    this.setCounter = 0;
   }
 
   addExercise(event) {
@@ -13,7 +14,7 @@ export default class extends Controller {
     const timestamp = new Date().getTime()
     const wrapper = document.createElement('div')
     wrapper.appendChild(this.templateTarget.content.cloneNode(true))
-    const content = wrapper.innerHTML.replace(/NEW_RECORD/g, timestamp)
+    const content = wrapper.innerHTML.replace(/NEW_EXERCISE/g, timestamp)
     this.exercisesTarget.insertAdjacentHTML("beforeend", content)
     console.log("workout-form: exercise added", timestamp)
   }
@@ -35,18 +36,19 @@ export default class extends Controller {
     const exerciseFields = event.target.closest('.exercise-fields')
     const setsContainer = exerciseFields.querySelector('.sets-container')
     const setTemplate = exerciseFields.querySelector('.set-template')
-    const timestamp = new Date().getTime()
+    this.setCounter++
+    const uniqueID = new Date().getTime() + this.setCounter
     const wrapper = document.createElement('div')
     wrapper.appendChild(setTemplate.content.cloneNode(true))
-    wrapper.innerHTML = wrapper.innerHTML.replace(/NEW_RECORD/g, timestamp)
+    wrapper.innerHTML = wrapper.innerHTML.replace(/NEW_SET/g, uniqueID)
     const newSet = wrapper.firstElementChild
-    const lastSet = setsContainer.querySelector('.set-fields:last-of-type:not([stlyle*="display: none"])')
+    const lastSet = setsContainer.querySelector('.set-fields:last-of-type:not([style*="display: none"])')
     if (lastSet) {
       newSet.querySelector('[name*="weight"]').value = lastSet.querySelector('[name*="weight"]').value
       newSet.querySelector('[name*="reps"]').value = lastSet.querySelector('[name*="reps"]').value
     }
     setsContainer.appendChild(newSet)
-    console.log("workout-form: set added", timestamp)
+    console.log("workout-form: set added", uniqueID)
   }
 
   removeSet(event) {

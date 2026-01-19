@@ -14,7 +14,7 @@
 </div>
 
 <template class="set-template">
-  <%= f.fields_for :working_sets, WorkingSet.new, child_index: "NEW_RECORD" do |set_fields| %>
+  <%= f.fields_for :working_sets, WorkingSet.new, child_index: "NEW_SET" do |set_fields| %>
     <div class="set-fields">
       <%= set_fields.number_field :reps, min: 1, placeholder: "Reps" %>
       <%= set_fields.number_field :weight, min: 1, placeholder: "Weight in kg" %>
@@ -23,7 +23,6 @@
     </div>
   <% end %>
 </template>
-
 
 <%= link_to "Add Set", "#",
     data: { action: "click->workout-form#addSet" } %>
