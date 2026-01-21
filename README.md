@@ -20,6 +20,8 @@ SQLite3
 Used to learn/review Stimulus and Rails, but all coded by hand.
 
 ## Setup
+```
 bundle install
 rails db:migrate
 rails server
+```
