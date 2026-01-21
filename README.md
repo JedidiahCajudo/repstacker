@@ -11,8 +11,8 @@ The ultimate upgrade from a lifting journal and pen on the bench next to you.
 
 ## Tech Stack
 
-Rails 8.1
-Stimulus.js
+Rails 8.1  
+Stimulus.js  
 SQLite3
 
 ## AI
