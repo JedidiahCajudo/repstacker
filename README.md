@@ -1,24 +1,17 @@
-# README
+# REPSTACKER
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Luxurious Lift Logging
 
-Things you may want to cover:
+## What It Does
 
-* Ruby version
+The ultimate upgrade from a lifting journal and pen on the bench next to you.
 
-* System dependencies
+## Tech Stack
 
-* Configuration
+Rails 8.1
+Stimulus.js
+SQLite3
 
-* Database creation
+## No AI
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+It doesn't use AI at all, and not a single character of code is copied and pasted from an LLM, though I did use it to learn/review Stimulus and Rails.
