@@ -62,4 +62,36 @@ export default class extends Controller {
       set.remove()
     }
   }
+
+  fetchPreviousPerformance(event) {
+    const exerciseFields = event.target.closest('.exercise-fields')
+    const exerciseName = event.target.value.trim()
+    if (!exerciseName) return
+    fetch(`/previous_performance?name=${exerciseName}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.sets && data.sets.length > 0) {
+          this.populateSets(exerciseFields, data.sets)
+        }
+     })
+
+    }
+    populateSets(exerciseFields, setsData) {
+      const setsContainer = exerciseFields.querySelector('.sets-container')
+      const setTemplate = exerciseFields.querySelector('.set-template')
+      const existingSets = setsContainer.querySelectorAll('.set-fields')
+      existingSets.forEach(set => set.remove())
+      setsData.forEach(setData => {
+        this.setCounter++
+        const uniqueID = new Date().getTime() + this.setCounter
+        const wrapper = document.createElement('div')
+        wrapper.appendChild(setTemplate.content.cloneNode(true))
+        wrapper.innerHTML = wrapper.innerHTML.replace(/NEW_SET/g, uniqueID)
+        const newSet = wrapper.firstElementChild
+        newSet.querySelector('[name*="weight"]').value = setData.weight
+        newSet.querySelector('[name*="reps"]').value = setData.reps
+        setsContainer.appendChild(newSet)
+        console.log("workout-form: set added", uniqueID)
+      })
+    }
 }
