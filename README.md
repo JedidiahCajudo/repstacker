@@ -20,6 +20,7 @@ Used to learn/review Stimulus and Rails, but all coded by hand.
 
 ## Setup
 ```
+git clone https://github.com/JedidiahCajudo/repstacker.git
 bundle install
 rails db:migrate
 rails server
