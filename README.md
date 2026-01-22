@@ -1,24 +1,25 @@
-# README
+# REPSTACKER
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Luxurious Lift Logging
 
-Things you may want to cover:
+<img width="200" height="400" alt="Screenshot 2025-07-16 at 13 33 05" src="https://github.com/user-attachments/assets/8e48a9ee-83dd-441a-a2f2-b41472842d27" />
+<img width="200" height="400" alt="Screenshot 2025-07-16 at 13 33 09" src="https://github.com/user-attachments/assets/6a50230a-48f7-45bc-bcb7-2a77f022cddd" />
 
-* Ruby version
+## What It Does
 
-* System dependencies
+The ultimate upgrade from a lifting journal and pen on the bench next to you.
 
-* Configuration
+Rails 8.1  
+Stimulus.js  
+SQLite3
 
-* Database creation
+## AI
 
-* Database initialization
+Used to learn/review Stimulus and Rails, but all coded by hand.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Setup
+```
+bundle install
+rails db:migrate
+rails server
+```
