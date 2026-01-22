@@ -7,7 +7,8 @@ Luxurious Lift Logging
 
 ## What It Does
 
-The ultimate upgrade from a lifting journal and pen on the bench next to you.
+The ultimate upgrade from a paper lifting journal.
+The most beautiful way to track your 3 x 8-12 reps.
 
 Rails 8.1  
 Stimulus.js  
