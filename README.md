@@ -14,10 +14,6 @@ Rails 8.1
 Stimulus.js  
 SQLite3
 
-## AI
-
-Used to learn/review Stimulus and Rails, but all coded by hand.
-
 ## Setup
 ```
 git clone https://github.com/JedidiahCajudo/repstacker.git
