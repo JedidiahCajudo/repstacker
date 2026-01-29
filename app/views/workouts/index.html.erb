@@ -10,7 +10,7 @@
         <div>
           <%= exercise.name  %>
           <% exercise.working_sets.each do |set| %>
-            <div><%= set.weight %>kg x <%= set.reps %></div>
+            <div><%= set.weight.to_i %>kg x <%= set.reps %></div>
           <% end %>
         </div>
       <% end %>
