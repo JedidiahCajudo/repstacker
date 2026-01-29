@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
   resource :sign_up, only: %i[new create]
 
+  namespace :settings do
+    resource :password, only: [ :show, :update ]
+  end
+
   resources :workouts do
     resources :exercises, only: %i[create update destroy]
   end
