@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  get "sign_up/new"
+  get "sign_up/create"
   resource :session
   resources :passwords, param: :token
+  resource :sign_up
   resources :workouts do
     resources :exercises, only: %i[create update destroy]
   end
