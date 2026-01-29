@@ -1,5 +1,5 @@
 class SignUpsController < ApplicationController
-  allow_unauthenticated_access
+  unauthenticated_access_only
   def new
     @user = User.new
   end
@@ -10,13 +10,13 @@ class SignUpsController < ApplicationController
       start_new_session_for(@user)
       redirect_to workouts_path
     else
-      render :show, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
 
   private
   def sign_up_params
-    params.expect(user: [ :first_name, :last_name, :email_address, :password, :password_confirmation ])
+    params.expect(user: [ :email_address, :password, :password_confirmation ])
   end
 end
