@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :exercises, only: %i[create update destroy]
   end
 
-  root "sign_ups#new"
+  root "workouts#index"
 
   get "previous_performance", to: "exercises#previous_performance"
 

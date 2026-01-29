@@ -1,4 +1,4 @@
-class Settings::ProfilesController < ApplicationController < Settings::BaseController
+class Settings::ProfilesController < Settings::BaseController
   def show
   end
 
@@ -12,6 +12,6 @@ class Settings::ProfilesController < ApplicationController < Settings::BaseContr
 
   private
     def profile_params
-      params.expect(user: [ :first_name, :last_name ])
+      params.expect(user: [ :email_address ])
     end
 end
