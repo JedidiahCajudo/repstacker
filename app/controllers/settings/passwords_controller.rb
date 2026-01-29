@@ -1,4 +1,4 @@
-class Settings::PasswordsController < ApplicationController
+class Settings::PasswordsController < ApplicationController < Settings::BaseController
   def show
   end
 

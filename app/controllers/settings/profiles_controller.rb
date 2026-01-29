@@ -1,4 +1,4 @@
-class Settings::ProfilesController < ApplicationController
+class Settings::ProfilesController < ApplicationController < Settings::BaseController
   def show
   end
 
