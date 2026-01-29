@@ -4,11 +4,10 @@ Rails.application.routes.draw do
   resource :sign_up, only: %i[new create]
 
   namespace :settings do
+    root "base#index"
     resource :email, only: [ :show, :update ]
     resource :password, only: [ :show, :update ]
     resource :user, only: [ :show, :destroy ]
-
-    root to: redirect("/settings/password")
   end
 
   namespace :email do
@@ -22,5 +21,4 @@ Rails.application.routes.draw do
   root "workouts#index"
 
   get "previous_performance", to: "exercises#previous_performance"
-
 end
