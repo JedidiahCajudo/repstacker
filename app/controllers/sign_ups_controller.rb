@@ -1,5 +1,6 @@
 class SignUpsController < ApplicationController
-  def show
+  allow_unauthenticated_access
+  def new
     @user = User.new
   end
 
@@ -7,7 +8,7 @@ class SignUpsController < ApplicationController
     @user = User.new(sign_up_params)
     if @user.save
       start_new_session_for(@user)
-      redirect_to root_path
+      redirect_to workouts_path
     else
       render :show, status: :unprocessable_entity
     end

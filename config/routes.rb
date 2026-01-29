@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  get "sign_up/new"
-  get "sign_up/create"
-  resource :session
+  resource :session, only: %i[new create destroy]
   resources :passwords, param: :token
-  resource :sign_up
+  resource :sign_up, only: %i[new create]
+
   resources :workouts do
     resources :exercises, only: %i[create update destroy]
   end
-  root "workouts#index"
+
+  root "sign_ups#new"
 
   get "previous_performance", to: "exercises#previous_performance"
 
