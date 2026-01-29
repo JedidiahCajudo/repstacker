@@ -25,6 +25,7 @@ nav.navbar a {
 section.settings {
   display: flex;
   gap: 1rem;
+  padding: 1rem;
 }
 
 section.settings nav {
