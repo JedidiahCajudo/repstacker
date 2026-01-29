@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     root to: redirect("/settings/profile")
   end
 
+  namespace :email do
+    resources :confirmations, param: :token, only: [ :show ]
+  end
+
   resources :workouts do
     resources :exercises, only: %i[create update destroy]
   end
