@@ -1,0 +1,19 @@
+<h1>Account</h1>
+
+<div class="setting-item">
+  <h3>Email Address</h3>
+  <p><%= Current.user.email_address %></p>
+  <%= link_to "Change", settings_email_path %>
+</div>
+
+<div class="setting-item">
+  <h3>Password</h3>
+  <p>********</p>
+  <%= link_to "Change", settings_password_path %>
+</div>
+
+<div class="setting-item">
+  <h3>Account</h3>
+  <p>Delete account and all data</p>
+  <%= link_to "Manage", settings_user_path %>
+</div>
